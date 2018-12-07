@@ -11,13 +11,13 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js');
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  '/precache-manifest.80b20e34cdbcb07f10acd41b25795265.js',
+  "/precache-manifest.56e73d5792f76a87f2e6878fed873903.js"
 );
 
-workbox.core.setCacheNameDetails({ prefix: 'sportswhere' });
+workbox.core.setCacheNameDetails({prefix: "sportswhere"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
