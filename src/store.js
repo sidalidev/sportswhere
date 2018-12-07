@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     activityLocalization: null,
     activityDescription: null,
+    favouriteSport: null,
   },
   mutations: {
     setActivityLocalization(state, localization) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     setActivityDescription(state, description) {
       state.activityDescription = description;
     },
+    setFavouriteSport(state, favouriteSport) {
+      state.favouriteSport = favouriteSport;
+    },
   },
   actions: {
     activityLocalization({ commit }, localization) {
@@ -22,6 +26,9 @@ export default new Vuex.Store({
     },
     activityDescription({ commit }, description) {
       commit('setActivityDescription', description);
+    },
+    setFavouriteSport({ commit }, favouriteSport) {
+      commit('setFavouriteSport', favouriteSport);
     },
   },
 });

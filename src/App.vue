@@ -7,7 +7,7 @@
     </v-toolbar>
 
     <v-content>
-      <router-view></router-view>
+      <router-view :key="$route.path"></router-view>
       <v-bottom-nav :active.sync="bottomNav" :value="true" fixed>
         <v-btn
           @click="$router.push('/sports')"

@@ -6,7 +6,7 @@
           <v-flex xs12>
             <v-card
               v-for="sport in sports"
-              :key="sport.name"
+              :key="sport.title"
               color="teal"
               class="white--text"
             >
@@ -30,7 +30,9 @@
               <v-divider light></v-divider>
               <v-card-actions class="pa-3">
                 <v-spacer></v-spacer>
-                <v-icon>star_border</v-icon>
+                <v-icon
+                  @click="setFavouriteSport(sport.title); $router.push('/')"
+                >star_border</v-icon>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -41,6 +43,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { getUser } from '../services/sports';
 
 export default {
@@ -48,6 +51,9 @@ export default {
     return {
       sports: [],
     };
+  },
+  methods: {
+    ...mapActions(['setFavouriteSport']),
   },
   created() {
     getUser()
