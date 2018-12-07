@@ -13,6 +13,7 @@
     <v-content>
       <router-view></router-view>
       <v-bottom-nav
+        :active.sync="bottomNav"
         :value="true"
         fixed
       >
@@ -20,29 +21,29 @@
           @click="$router.push('/about')"
           color="teal"
           flat
-          value="recent"
+          value="sports"
         >
-          <span>Recent</span>
-          <v-icon>history</v-icon>
+          <span>Sports</span>
+          <v-icon>accessibility_new</v-icon>
         </v-btn>
 
         <v-btn
           @click="$router.push('/')"
           color="teal"
           flat
-          value="favorites"
+          value="home"
         >
-          <span>Favorites</span>
-          <v-icon>favorite</v-icon>
+          <span>Accueil</span>
+          <v-icon>home</v-icon>
         </v-btn>
 
         <v-btn
           @click="$router.push('map')"
           color="teal"
           flat
-          value="nearby"
+          value="map"
         >
-          <span>Nearby</span>
+          <span>Carte</span>
           <v-icon>map</v-icon>
         </v-btn>
       </v-bottom-nav>
@@ -55,7 +56,7 @@ export default {
   name: 'App',
   data() {
     return {
-      //
+      bottomNav: 'home',
     };
   },
 };

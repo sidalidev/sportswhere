@@ -1,7 +1,76 @@
 <template>
-  <div
-    class="map"
+  <v-card
+    padding
   >
-    <h1>Map</h1>
-  </div>
+    <v-card-title
+      primary-title
+    >
+      <div>
+        <h3
+          class="headline mb-0"
+        >Kangaroo Valley Safari</h3>
+        <div>Located two hours south of Sydney in the
+          <br>Southern Highlands of New South Wales, ...
+        </div>
+      </div>
+    </v-card-title>
+
+    <v-container>
+      <vl-map
+        :load-tiles-while-animating="true"
+        :load-tiles-while-interacting="true"
+        data-projection="EPSG:4326"
+        style="height: 50vh"
+      >
+        <vl-view
+          :zoom.sync="zoom"
+          :center.sync="geolocPosition"
+          :rotation.sync="rotation"
+        ></vl-view>
+
+        <vl-geoloc
+          @update:position="geolocPosition = $event"
+        >
+          <template
+            slot-scope="geoloc"
+          >
+            <vl-feature
+              v-if="geoloc.position"
+              id="position-feature"
+            >
+              <vl-geom-point
+                :coordinates="geoloc.position"
+              ></vl-geom-point>
+              <vl-style-box>
+                <vl-style-icon
+                  :src="require('../assets/marker.png')"
+                  :scale="0.2"
+                  :anchor="[0.5, 1]"
+                ></vl-style-icon>
+              </vl-style-box>
+            </vl-feature>
+          </template>
+        </vl-geoloc>
+
+        <vl-layer-tile
+          id="osm"
+        >
+          <vl-source-osm></vl-source-osm>
+        </vl-layer-tile>
+      </vl-map>
+    </v-container>
+  </v-card>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      zoom: 5,
+      center: [0, 0],
+      rotation: 0,
+      geolocPosition: undefined,
+    };
+  },
+};
+</script>
