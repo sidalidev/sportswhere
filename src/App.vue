@@ -20,9 +20,9 @@
           @click="$router.push('/about')"
           color="teal"
           flat
-          value="recent"
+          value="chatbot"
         >
-          <span>Recent</span>
+          <span>Chatbot</span>
           <v-icon>history</v-icon>
         </v-btn>
 
@@ -30,9 +30,9 @@
           @click="$router.push('/')"
           color="teal"
           flat
-          value="favorites"
+          value="home"
         >
-          <span>Favorites</span>
+          <span>Accueil</span>
           <v-icon>favorite</v-icon>
         </v-btn>
 
@@ -40,9 +40,9 @@
           @click="$router.push('map')"
           color="teal"
           flat
-          value="nearby"
+          value="map"
         >
-          <span>Nearby</span>
+          <span>Maps</span>
           <v-icon>map</v-icon>
         </v-btn>
       </v-bottom-nav>
