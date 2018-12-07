@@ -1,17 +1,9 @@
 <template>
-  <v-card
-    padding
-  >
-    <v-card-title
-      primary-title
-    >
+  <v-card padding>
+    <v-card-title primary-title>
       <div>
-        <h3
-          class="headline mb-0"
-        >Kangaroo Valley Safari</h3>
-        <div>Located two hours south of Sydney in the
-          <br>Southern Highlands of New South Wales, ...
-        </div>
+        <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
+        <div>{{activityDescription}}</div>
       </div>
     </v-card-title>
 
@@ -28,19 +20,10 @@
           :rotation.sync="rotation"
         ></vl-view>
 
-        <vl-geoloc
-          @update:position="geolocPosition = $event"
-        >
-          <template
-            slot-scope="geoloc"
-          >
-            <vl-feature
-              v-if="geoloc.position"
-              id="position-feature"
-            >
-              <vl-geom-point
-                :coordinates="geoloc.position"
-              ></vl-geom-point>
+        <vl-geoloc @update:position="geolocPosition = $event">
+          <template slot-scope="geoloc">
+            <vl-feature v-if="geoloc.position" id="position-feature">
+              <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>
               <vl-style-box>
                 <vl-style-icon
                   :src="require('../assets/marker.png')"
@@ -52,9 +35,7 @@
           </template>
         </vl-geoloc>
 
-        <vl-layer-tile
-          id="osm"
-        >
+        <vl-layer-tile id="osm">
           <vl-source-osm></vl-source-osm>
         </vl-layer-tile>
       </vl-map>
@@ -63,14 +44,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   data() {
     return {
       zoom: 5,
-      center: [0, 0],
+      center: this.activityLocalization,
       rotation: 0,
-      geolocPosition: undefined,
+      geolocPosition: this.activityLocalization,
     };
+  },
+  computed: {
+    ...mapState(['activityLocalization', 'activityDescription']),
   },
 };
 </script>

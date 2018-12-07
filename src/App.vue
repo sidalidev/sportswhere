@@ -1,24 +1,16 @@
 <template>
   <v-app>
-    <v-toolbar
-      app
-    >
-      <v-toolbar-title
-        class="headline text-uppercase"
-      >
+    <v-toolbar color="white" app>
+      <v-toolbar-title class="headline text-uppercase">
         <span>Sportswhere</span>
       </v-toolbar-title>
     </v-toolbar>
 
     <v-content>
       <router-view></router-view>
-      <v-bottom-nav
-        :active.sync="bottomNav"
-        :value="true"
-        fixed
-      >
+      <v-bottom-nav :active.sync="bottomNav" :value="true" fixed>
         <v-btn
-          @click="$router.push('/about')"
+          @click="$router.push('/sports')"
           color="teal"
           flat
           value="sports"
@@ -27,22 +19,12 @@
           <v-icon>accessibility_new</v-icon>
         </v-btn>
 
-        <v-btn
-          @click="$router.push('/')"
-          color="teal"
-          flat
-          value="home"
-        >
+        <v-btn @click="$router.push('/')" color="teal" flat value="home">
           <span>Accueil</span>
           <v-icon>home</v-icon>
         </v-btn>
 
-        <v-btn
-          @click="$router.push('map')"
-          color="teal"
-          flat
-          value="map"
-        >
+        <v-btn @click="$router.push('map')" color="teal" flat value="map">
           <span>Carte</span>
           <v-icon>map</v-icon>
         </v-btn>
