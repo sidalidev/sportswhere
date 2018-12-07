@@ -45,6 +45,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import { getActivities } from '../services/sports';
 
 export default {
   data() {
@@ -52,11 +53,14 @@ export default {
       zoom: 5,
       center: this.activityLocalization,
       rotation: 0,
-      geolocPosition: this.activityLocalization,
+      geolocPosition: [0, 0],
     };
   },
   computed: {
     ...mapState(['activityLocalization', 'activityDescription']),
+  },
+  created() {
+    getActivities(this.geolocPosition[0], this.geolocPosition[1]).then(res => console.log(res),);
   },
 };
 </script>

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.56e73d5792f76a87f2e6878fed873903.js"
+  "/precache-manifest.51dc14d16606848727b172f627d67c34.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "sportswhere"});
