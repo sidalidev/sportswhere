@@ -6,5 +6,5 @@ import axios from 'axios';
 // }
 
 export function getUser() {
-  return axios.get('http://ndlinfo.herokuapp.com/users/1');
+  return axios.get('http://ndlinfo.herokuapp.com/users/1.json');
 }

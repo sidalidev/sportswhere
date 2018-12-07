@@ -4,7 +4,12 @@
       <v-container fluid grid-list-lg>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card color="teal" class="white--text">
+            <v-card
+              v-for="sport in sports"
+              :key="sport.name"
+              color="teal"
+              class="white--text"
+            >
               <v-layout>
                 <v-flex xs5>
                   <v-img
@@ -16,9 +21,8 @@
                 <v-flex xs7>
                   <v-card-title primary-title>
                     <div>
-                      <div class="headline">Supermodel</div>
-                      <div>Foster the People</div>
-                      <div>(2014)</div>
+                      <div class="headline">{{sport.title}}</div>
+                      <div>Sit Lorem nulla nostrud mollit cupidatat cillum sunt commodo pariatur elit cupidatat nostrud esse.</div>
                     </div>
                   </v-card-title>
                 </v-flex>
@@ -40,8 +44,19 @@
 import { getUser } from '../services/sports';
 
 export default {
+  data() {
+    return {
+      sports: [],
+    };
+  },
   created() {
-    getUser().then(res => console.log(res));
+    getUser()
+      .then(({ data: { sports } }) => {
+        this.sports = sports;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   },
 };
 </script>
